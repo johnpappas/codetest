@@ -32,7 +32,7 @@
 ```
 com.codetest.constants.DataFileConstants.java
 ```
-	- Common constants used by application.
+- Common constants used by application.
 
 ```
 com.codetest.constants.DelimiterDerivedRecordMetaData.java
