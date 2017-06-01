@@ -36,55 +36,55 @@ com.codetest.constants.DataFileConstants.java
 
 ```
 com.codetest.constants.DelimiterDerivedRecordMetaData.java
-	- Each constant in this Enum represent the fields in each person data file.
-	- Additionally, each constant has properties that contains the 'Array Element Index' location for that particular field - for each type of delimited file.
-	- This is the constructor for the Enum - it makes it a little easier to picture:
-	`DelimiterDerivedRecordMetaData(int csvElementIndex, int spaceElementIndex, int pipeElementIndex)`
-	(E.g., GENDER(2,3,3) indicates that the gender field exists in the 2nd array-element index in the comma file and at the 3rd array Element index in both the space and pipe files.)
+- Each constant in this Enum represent the fields in each person data file.
+- Additionally, each constant has properties that contains the 'Array Element Index' location for that particular field - for each type of delimited file.
+- This is the constructor for the Enum - it makes it a little easier to picture:
+`DelimiterDerivedRecordMetaData(int csvElementIndex, int spaceElementIndex, int pipeElementIndex)`
+(E.g., GENDER(2,3,3) indicates that the gender field exists in the 2nd array-element index in the comma file and at the 3rd array Element index in both the space and pipe files.)
 
 ```
 com.codetest.dao.PersonRecordDao.java
 com.codetest.dao.PersonRecordDaoImpl.java
 ```
-	- This interface and accompanying implementation does two things: 
-	  1. creates a PersonRecord from an actual record from the Person data file; and,
-	  2. creates a List of PersonRecords to return to the calling method.
-	- This `getPersonRecord(String line, String filePrefix)` method is unique in that it serves as a dynamic DataMapper.  The correct delimiter is identified by using the source filename.
-	- An Enum is used then to order the field-setting of each attribute and identify the correct element in the tokenized array that the current Enum corresponds.
+- This interface and accompanying implementation does two things: 
+  1. creates a PersonRecord from an actual record from the Person data file; and,
+  2. creates a List of PersonRecords to return to the calling method.
+- This `getPersonRecord(String line, String filePrefix)` method is unique in that it serves as a dynamic DataMapper.  The correct delimiter is identified by using the source filename.
+- An Enum is used then to order the field-setting of each attribute and identify the correct element in the tokenized array that the current Enum corresponds.
 
 ```
 com.codetest.domain.PersonRecord.java
 com.codetest.domain.PersonRecordDataSource.java
 ```
-	- The PersonRecord domain object represents Person data
-	- We use only one PersonRecord object to represent both Persons with a middle initial and without because the only difference is the lack of a middle initial which implies absence of data and not a different `PersonRecord` 	per se.  The PersonRecordDataSource is the class that represents the source files.
-	- If the person data records are held elsewhere besides a File then and object like this allows a little more flexibility with swapping out the persistence store.
+- The PersonRecord domain object represents Person data
+- We use only one PersonRecord object to represent both Persons with a middle initial and without because the only difference is the lack of a middle initial which implies absence of data and not a different `PersonRecord` 	per se.  The PersonRecordDataSource is the class that represents the source files.
+- If the person data records are held elsewhere besides a File then and object like this allows a little more flexibility with swapping out the persistence store.
 
 ```
 com.codetest.driver.CodetestDriver.java
 ```
-	- The driver or Main-Class of our application.
+- The driver or Main-Class of our application.
 
 ```
 com.codetest.comparator.DateComparator.java
 com.codetest.comparator.GenderThenLastNameComparator.java
 com.codetest.comparator.LastNameComparator.java
 ```
-	- Comparator implementations to allow the following sorting:
-	  1. by Gender (Female before Male), then Last Name ascending;
-	  2. by Date, ascending; and,
-	  3. by Last Name, descending.
+- Comparator implementations to allow the following sorting:
+  1. by Gender (Female before Male), then Last Name ascending;
+  2. by Date, ascending; and,
+  3. by Last Name, descending.
 
 ```
 com.codetest.exception.PersonRecordException.java
 ```
-	- Custom Exception for the application.
+- Custom Exception for the application.
 
 ```
 com.codetest.service.PersonRecordService.java
 com.codetest.service.PersonRecordServiceImpl.java
 ```
-	- Service interface and implementation used to abstract data access and hold some business logic (for illustrative purposes, in our case the main() method holds more of the data manipulation logic than the service).
+- Service interface and implementation used to abstract data access and hold some business logic (for illustrative purposes, in our case the main() method holds more of the data manipulation logic than the service).
 
 
 ## JUnit tests
@@ -92,9 +92,9 @@ com.codetest.service.PersonRecordServiceImpl.java
 ```
 test.codetest.main.PersonRecordDaoTest.java
 ```
-	- Tests the parsing of the source person data input files and compares the returned `PersonRecord` domain object to the expected domain object.
+- Tests the parsing of the source person data input files and compares the returned `PersonRecord` domain object to the expected domain object.
 
 ```
 test.codetest.main.PersonRecordListSortTest.java
 ```
-	- Tests both the retrieval of the `List<PersonRecord>` from the service method and also tests the expected 'sort-order' of the 3 sorting formats specified in the requirements.
+- Tests both the retrieval of the `List<PersonRecord>` from the service method and also tests the expected 'sort-order' of the 3 sorting formats specified in the requirements.
