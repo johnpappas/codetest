@@ -36,6 +36,7 @@ com.codetest.constants.DataFileConstants.java
 
 ```
 com.codetest.constants.DelimiterDerivedRecordMetaData.java
+```
 - Each constant in this Enum represent the fields in each person data file.
 - Additionally, each constant has properties that contains the 'Array Element Index' location for that particular field - for each type of delimited file.
 - This is the constructor for the Enum - it makes it a little easier to picture:
